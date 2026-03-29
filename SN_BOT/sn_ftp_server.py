@@ -4,8 +4,8 @@ from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 # ==========================================
 # ⚙️ CONFIGURATION
 # ==========================================
-BOT_TOKEN = '8425711356:AAHex14zhojqhuTs01rYx-coT8YiXPfHOYqk'
-ADMIN_ID = 84096438904 
+BOT_TOKEN = '8425711356:AAHex14zhojqhuTs1rYx-coT8YiXPfHOYqk0'
+ADMIN_ID = -52614771400  # Group/Channel ID
 SERVER_LINK = 'http://100.100.100.6/'
 TV_SERVER_LINK = 'http://100.100.100.2'
 ICC_FTP_LINK = 'http://10.16.100.244/'
@@ -18,9 +18,9 @@ bot = telebot.TeleBot(BOT_TOKEN)
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
     markup = InlineKeyboardMarkup()
-    server_btn = InlineKeyboardButton("🌐 Movies Server", url=SERVER_LINK)
-    tv_server_btn = InlineKeyboardButton("📺 TV Server", url=TV_SERVER_LINK)
-    icc_ftp_btn = InlineKeyboardButton("⚡ ICC FTP Server", url=ICC_FTP_LINK)
+    server_btn = InlineKeyboardButton("🌐 SN Movies Server", url=SERVER_LINK)
+    tv_server_btn = InlineKeyboardButton("📺 SN TV Server", url=TV_SERVER_LINK)
+    icc_ftp_btn = InlineKeyboardButton("⚡ ICC FTP (PARTNER)", url=ICC_FTP_LINK)
     
     markup.add(server_btn)
     markup.add(tv_server_btn)
@@ -49,17 +49,21 @@ def handle_movie_request(message):
         bot.reply_to(message, "⚠️ Please include the movie name!\n\n*Format:* `/request_movie Movie Name`", parse_mode='Markdown')
         return
 
-    # Format the Username
     username = f"(@{message.from_user.username})" if message.from_user.username else ""
     
     admin_msg = (
         "🚨 **NEW CONTENT REQUEST** 🚨\n\n"
         f"👤 **From:** {message.from_user.first_name} {username}\n"
         f"🆔 **User ID:** `{message.from_user.id}`\n"
-        f"🎬 **Movie:** {request_text}"
+        f"🎬 **Movie:** `{request_text}`" 
     )
-    bot.send_message(ADMIN_ID, admin_msg, parse_mode='Markdown')
-    bot.reply_to(message, f"✅ Request for movie **{request_text}** sent to admin!", parse_mode='Markdown')
+    
+    try:
+        bot.send_message(ADMIN_ID, admin_msg, parse_mode='Markdown')
+        bot.reply_to(message, f"✅ Request for movie **{request_text}** sent to admin!", parse_mode='Markdown')
+    except Exception as e:
+        print(f"Error: {e}")
+        bot.reply_to(message, "❌ Error: Could not send request. Admin might need to add the bot to the group.")
 
 # ==========================================
 # 📺 /request_tv COMMAND
@@ -71,17 +75,21 @@ def handle_tv_request(message):
         bot.reply_to(message, "⚠️ Please include the TV show name!\n\n*Format:* `/request_tv Show Name`", parse_mode='Markdown')
         return
 
-    # Format the Username
     username = f"(@{message.from_user.username})" if message.from_user.username else ""
     
     admin_msg = (
         "🚨 **NEW CONTENT REQUEST** 🚨\n\n"
         f"👤 **From:** {message.from_user.first_name} {username}\n"
         f"🆔 **User ID:** `{message.from_user.id}`\n"
-        f"🎞️ **TV Show:** {request_text}"
+        f"🎞️ **TV Show:** `{request_text}`" 
     )
-    bot.send_message(ADMIN_ID, admin_msg, parse_mode='Markdown')
-    bot.reply_to(message, f"✅ Request for TV show **{request_text}** sent to admin!", parse_mode='Markdown')
+    
+    try:
+        bot.send_message(ADMIN_ID, admin_msg, parse_mode='Markdown')
+        bot.reply_to(message, f"✅ Request for TV show **{request_text}** sent to admin!", parse_mode='Markdown')
+    except Exception as e:
+        print(f"Error: {e}")
+        bot.reply_to(message, "❌ Error: Could not send request.")
 
 # ==========================================
 # 🎮 /request_game COMMAND
@@ -93,17 +101,21 @@ def handle_game_request(message):
         bot.reply_to(message, "⚠️ Please include the game name!\n\n*Format:* `/request_game Game Name`", parse_mode='Markdown')
         return
 
-    # Format the Username
     username = f"(@{message.from_user.username})" if message.from_user.username else ""
 
     admin_msg = (
         "🚨 **NEW CONTENT REQUEST** 🚨\n\n"
         f"👤 **From:** {message.from_user.first_name} {username}\n"
         f"🆔 **User ID:** `{message.from_user.id}`\n"
-        f"🕹️ **Game:** {request_text}"
+        f"🕹️ **Game:** `{request_text}`" 
     )
-    bot.send_message(ADMIN_ID, admin_msg, parse_mode='Markdown')
-    bot.reply_to(message, f"✅ Request for game **{request_text}** sent to admin!", parse_mode='Markdown')
+    
+    try:
+        bot.send_message(ADMIN_ID, admin_msg, parse_mode='Markdown')
+        bot.reply_to(message, f"✅ Request for game **{request_text}** sent to admin!", parse_mode='Markdown')
+    except Exception as e:
+        print(f"Error: {e}")
+        bot.reply_to(message, "❌ Error: Could not send request.")
 
 # ==========================================
 # 📦 /request_others COMMAND
@@ -115,17 +127,21 @@ def handle_others_request(message):
         bot.reply_to(message, "⚠️ Please include what you are looking for!\n\n*Format:* `/request_others Software/Music/Item Name`", parse_mode='Markdown')
         return
 
-    # Format the Username
     username = f"(@{message.from_user.username})" if message.from_user.username else ""
 
     admin_msg = (
         "🚨 **NEW CONTENT REQUEST** 🚨\n\n"
         f"👤 **From:** {message.from_user.first_name} {username}\n"
         f"🆔 **User ID:** `{message.from_user.id}`\n"
-        f"📦 **Misc Item:** {request_text}"
+        f"📦 **Misc Item:** `{request_text}`" 
     )
-    bot.send_message(ADMIN_ID, admin_msg, parse_mode='Markdown')
-    bot.reply_to(message, f"✅ Request for **{request_text}** sent to admin!", parse_mode='Markdown')
+    
+    try:
+        bot.send_message(ADMIN_ID, admin_msg, parse_mode='Markdown')
+        bot.reply_to(message, f"✅ Request for **{request_text}** sent to admin!", parse_mode='Markdown')
+    except Exception as e:
+        print(f"Error: {e}")
+        bot.reply_to(message, "❌ Error: Could not send request.")
 
 # ==========================================
 # 🤖 AUTO-REPLY (Catch-all for regular text)
