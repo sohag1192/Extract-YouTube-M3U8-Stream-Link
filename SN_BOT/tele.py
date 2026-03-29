@@ -1,7 +1,7 @@
 import telebot
 
 # 1. Paste the API token you got from @BotFather
-API_TOKEN = '8296157365:ss'
+API_TOKEN = '8296157365:AAEKj8U9TmADMoHDjuQjJ0_alg7BH3dOVgc'
 bot = telebot.TeleBot(API_TOKEN)
 
 # 2. Define your bilingual announcement message

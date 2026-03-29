@@ -2,7 +2,7 @@ import telebot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 # --- CONFIGURATION ---
-API_TOKEN = '8296157365:ss' 
+API_TOKEN = '8296157365:AAEKj8U9TmADMoHDjuQjJ0_alg7BH3dOVgc' 
 ADMIN_ID = '8409643894' # e.g., 123456789 (See instructions below on how to get this)
 
 bot = telebot.TeleBot(API_TOKEN)
