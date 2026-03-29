@@ -5,8 +5,8 @@ from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 # ⚙️ CONFIGURATION
 # ==========================================
 # ⚠️ Friendly reminder: Keep your BOT_TOKEN secret! 
-BOT_TOKEN = '8425711356:SS-coT8YiXPfHOYqk'
-ADMIN_ID = 8409643894 
+BOT_TOKEN = '8425711356:AAHex14zhojssqhuTs1rYx-coT8YiXPfHOYqk'
+ADMIN_ID = -526147714ss0 
 SERVER_LINK = 'http://100.100.100.6/'
 TV_SERVER_LINK = 'http://100.100.100.2'
 ICC_FTP_LINK = 'http://10.16.100.244/' # NEW ICC FTP Link
@@ -20,8 +20,8 @@ bot = telebot.TeleBot(BOT_TOKEN)
 def send_welcome(message):
     # Create the Inline Buttons
     markup = InlineKeyboardMarkup()
-    server_btn = InlineKeyboardButton("🌐 Movies Server", url=SERVER_LINK)
-    tv_server_btn = InlineKeyboardButton("📺 TV Server", url=TV_SERVER_LINK)
+    server_btn = InlineKeyboardButton("🌐SN Movies Server", url=SERVER_LINK)
+    tv_server_btn = InlineKeyboardButton("📺 SN TV Server", url=TV_SERVER_LINK)
     icc_ftp_btn = InlineKeyboardButton("⚡ ICC FTP Server", url=ICC_FTP_LINK)
     
     # Add buttons (stacking them vertically for a clean look)
