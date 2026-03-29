@@ -3,9 +3,9 @@ import yt_dlp
 def get_m3u8_url(video_url):
     # Configure yt-dlp to extract information without downloading the video
     ydl_opts = {
-        'format': 'best', # Gets the best quality stream available
-        'quiet': True,    # Suppresses console output
-        'noplaylist': True
+        'format': 'best',   # Gets the best quality stream available
+        'quiet': True,      # Suppresses console output
+        'noplaylist': True  # Ensures only the single video is processed
     }
 
     try:
@@ -22,6 +22,7 @@ def get_m3u8_url(video_url):
                 
     except Exception as e:
         return f"An error occurred: {e}"
+
 
 # The target YouTube Live Stream
 url = "https://www.youtube.com/watch?v=Y5A7zHc8hNY"
