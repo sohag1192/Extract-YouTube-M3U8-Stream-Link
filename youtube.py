@@ -24,7 +24,7 @@ def get_m3u8_url(video_url):
         return f"An error occurred: {e}"
 
 # The target YouTube Live Stream
-url = "https://www.youtube.com/watch?v=Y5A7zHc8hNY"
+url = "https://www.youtube.com/watch?v=AzzEUSQrcjw"
 
 stream_link = get_m3u8_url(url)
 
